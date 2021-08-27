@@ -51,4 +51,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Extra gems
 gem 'devise', '~> 4.8'
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 gem 'table_print', '~> 1.5', '>= 1.5.7'
