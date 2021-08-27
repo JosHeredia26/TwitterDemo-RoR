@@ -1,7 +1,57 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "faker"
+
+puts "Start seeding"
+Comment.destroy_all
+Tweet.destroy_all
+User.destroy_all
+
+puts "Seeding users..."
+
+# Create own user
+jos = User.new(
+  email: "jose.heredia.pachas@gmail.com",
+  password: "123456",
+  username: "JosHeredia26",
+  name: "José Heredia"
+)
+puts "User not created.\nErrors: #{jos.errors.full_messages}" unless jos.save
+
+rand(3..6).times do
+  user_data = {
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(min_length: 6),
+    username: Faker::Internet.username,
+    name: Faker::Name.name
+  }
+  new_user = User.new(user_data)
+  puts "User not created.\nErrors: #{new_user.errors.full_messages}" unless new_user.save
+end
+
+puts "Seeding tweets..."
+users = User.all
+users.each do |user|
+  rand(0..2).times do
+    tweet_data = {
+      body: Faker::Lorem.paragraph,
+      user: user
+    }
+    new_tweet = user.tweets.new(tweet_data)
+    puts "Tweet not created.\nErrors: #{new_tweet.errors.full_messages}" unless new_tweet.save
+  end
+end
+
+puts "Seeding comments..."
+tweets = Tweet.all
+tweets.each do |tweet|
+  rand(0..2).times do
+    comment_data = {
+      body: Faker::Lorem.paragraph,
+      tweet: tweet,
+      user: users.sample
+    }
+    new_comment = tweet.comments.new(comment_data)
+    puts "Tweet not created.\nErrors: #{new_comment.errors.full_messages}" unless new_comment.save
+  end
+end
+
+puts "Finish seeding"
