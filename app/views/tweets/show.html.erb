@@ -6,7 +6,11 @@
         <div class="tweet_frame">
           <div class="content">
             <div class="tweet_frame_header">
-              <%= image_tag @tweet.user.avatar, class: "avatar" %>
+              <% if @tweet.user.avatar.attached? %>
+                <%= image_tag @tweet.user.avatar, class: "avatar" %>
+              <% else %>
+                <%= image_tag "/images/thanus.png", class: "avatar" %>
+              <% end %>
 
               <div class="tweet_frame_header_data">
                 <div class="tweet_username">
@@ -41,7 +45,11 @@
     <% if current_user&.id %>
       <div class="tweet_form">
         <div>
-          <%= image_tag current_user.avatar, class: "avatar" %>
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, class: "avatar" %>
+          <% else %>
+            <%= image_tag "/images/thanus.png", class: "avatar" %>
+          <% end %>
         </div>
         <div style="width:84%;">
           <%= form_tag "/tweets/#{@tweet.id}/comments" do |form| %>
@@ -59,7 +67,11 @@
         <div class="tweet_frame">
           <div class="content">
             <div class="tweet_frame_header">
-              <%= image_tag comment.user.avatar, class: "avatar" %>
+              <% if comment.user.avatar.attached? %>
+                <%= image_tag comment.user.avatar, class: "avatar" %>
+              <% else %>
+                <%= image_tag "/images/thanus.png", class: "avatar" %>
+              <% end %>
 
               <div class="tweet_frame_header_data">
                 <div class="tweet_username">
