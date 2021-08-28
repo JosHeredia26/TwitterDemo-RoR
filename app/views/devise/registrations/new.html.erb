@@ -1,0 +1,52 @@
+<section class="section--sm">
+  <div class="container" style="min-width:420px;">
+    <div class="content_sign">
+      <h1 class="heading_home">Sign Up</h1>
+
+      <div class="container__sign">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "generic-container", style:"width:100%;padding:0px;max-width:296px" }) do |f| %>
+          <div class="field">
+            <%= f.label :email, class:"input__label" %><br />
+            <%= f.email_field :email, placeholder: "example@mail.com", class:"input__login" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :username, class:"input__label" %><br />
+            <%= f.text_field :username, placeholder: "example", autofocus: true, class:"input__login" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :name, class:"input__label" %><br />
+            <%= f.text_field :name, placeholder: "Example Name", class:"input__login" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :avatar, class:"input__label" %><br />
+            <%= f.file_field :avatar %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password, class:"input__label" %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, placeholder: "********", class:"input__login" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation, class:"input__label" %><br />
+            <%= f.password_field :password_confirmation, placeholder: "********", class:"input__login" %>
+          </div>
+
+          <div class="actions" style="display: flex;justify-content: center;">
+            <%= f.submit "Submit", class: "btn btn--primary btn--medium", style: "border-radius: 100px;" %>
+          </div>
+        <% end %>
+
+        <p class="msg_login">Already a member?</p>
+
+        <%= link_to "Login", user_session_path, class: "msg_login_link" %>
+      </div>
+    </div>
+  </div>
+</section>

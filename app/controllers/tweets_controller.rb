@@ -22,6 +22,7 @@ class TweetsController < ApplicationController
   # POST /tweets
   def create
     @tweet = Tweet.new(tweet_params)
+    @tweet.user = current_user
 
     if @tweet.save
       redirect_to tweets_path
@@ -33,6 +34,7 @@ class TweetsController < ApplicationController
   # PATCH/PUT /tweets/:id
   def update
     @tweet = Tweet.find(params[:id])
+    @tweet.user = current_user
 
     if @tweet.update(tweet_params)
       redirect_to tweets_path

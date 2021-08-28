@@ -48,6 +48,11 @@
   background-color: white;
 }
 
+.input__login:focus-within {
+  box-shadow: #9ad0f9;
+  border: #9ad0f9;
+}
+
 .input__label {
   font-family: var(--primary-font);
   font-weight: 400;

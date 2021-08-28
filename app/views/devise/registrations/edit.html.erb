@@ -1,0 +1,59 @@
+<section class="section--sm">
+  <div class="container" style="min-width:420px;">
+    <div class="content_sign">
+      <h1 class="heading_home">Edit Profile </h1>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name),  html: { method: :put,  class: "generic-container", style:"width:100%;padding:0px; max-width:342px"  }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        
+        <div class="field">
+          <%= f.label :email, class:"input__label" %><br />
+          <%= f.email_field :email, placeholder: "diego@mail.com", autofocus: true, autocomplete: "email", class:"input__login" %>
+        </div>
+        
+        <div class="field">
+          <%= f.label :username, class:"input__label" %><br />
+          <%= f.text_field :username, placeholder: "diego",autofocus: true, autocomplete: "username", class:"input__login" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :name, class:"input__label" %><br />
+          <%= f.text_field :name, placeholder: "Diego Torres", autocomplete: "name", class:"input__login" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :avatar, class:"input__label" %><br />
+          <%= f.file_field :avatar %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :password, class:"input__label" %> <br />
+          <%= f.password_field :password, placeholder: "********", autocomplete: "new-password", class:"input__login" %>
+          <% if @minimum_password_length %><br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation, class:"input__label" %><br />
+          <%= f.password_field :password_confirmation, placeholder: "********", autocomplete: "new-password", class: "input__login" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :current_password, class:"input__label" %> <br />
+          <%= f.password_field :current_password, placeholder: "********", autocomplete: "current-password", class: "input__login" %>
+        </div>
+
+        <div class="actions" style="display: flex;justify-content: center;">
+          <%= f.submit "Submit",class: "btn btn--primary btn--medium" %>
+        </div>
+      <% end %>
+
+      <%= link_to "Back", :back, class: "msg_login_link" %>
+    </div>
+  </div>
+</section>
