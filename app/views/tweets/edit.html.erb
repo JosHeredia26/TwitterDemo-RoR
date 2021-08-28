@@ -1,0 +1,14 @@
+<section class="section--sm">
+  <div class="container" style="min-width:420px;">
+    <h1 class="heading_home">Edit Tweet</h1>
+    <%= form_for @tweet, url: {action: "update", id: @tweet.id }, html:{style:"display:flex;flex-direction:column;gap:8px;"} do |f| %>
+      <div>
+        <%= f.label :body, class: "input__label"%><br />
+        <%= f.text_area :body, class: "area_size content--m"%>
+      </div>
+      <div style="display:flex;justify-content:center;">
+        <%= f.submit "Edit", class: "btn btn--primary btn--medium", style: "border-radius: 100px;" %>
+      </div>
+    <% end %>
+  </div>
+</section>

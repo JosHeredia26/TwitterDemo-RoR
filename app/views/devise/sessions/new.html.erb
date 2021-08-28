@@ -1,0 +1,31 @@
+<section class="section--sm">
+  <div class="container" style="min-width:420px;">
+    <div class="content_sign">
+      <h1 class="heading_home">Login</h1>
+
+      <div class="container__sign">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "generic-container", style:"width:100%;padding:0px;" }) do |f| %>
+          <div class="field">
+            <%= f.label :email, class:"input__label" %><br />
+            <%= f.email_field :email, autofocus: true, placeholder: "example@mail.com", autocomplete: "email", class:"input__login" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password, class:"input__label" %><br />
+            <%= f.password_field :password, placeholder: "********", autocomplete: "current-password", class:"input__login" %>
+          </div>
+
+          <div class="actions" style="display: flex;justify-content: center;">
+            <%= f.submit "Submit", class: "btn btn--primary btn--medium", style: "border-radius: 100px;"%>
+          </div>
+        <% end %>
+      
+        <p class="msg_login">Don’t have an account?</p>
+        
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+          <%= link_to "Sign Up", new_registration_path(resource_name), class: "msg_login_link" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

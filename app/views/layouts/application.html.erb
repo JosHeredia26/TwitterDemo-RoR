@@ -10,6 +10,44 @@
   </head>
 
   <body>
+    <header class="navbar align-center">
+      <%= link_to(image_tag("twitter-logo", :alt => "logo"), root_path, class: 'logo' ) %>
+      <nav role="navigation">
+        <div id="menuToggle">
+          <input type="checkbox" />
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+          <% if user_signed_in? %>
+            <ul id="menu">
+              <p class="menu_text"><li><%= "Welcome #{current_user.username}!" %></li></p>
+              <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "msg_login_link" %></li>
+              <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btnew btnew--primary" %></li>
+            </ul>
+          <% else %>
+            <ul id="menu_sign_in">
+              <p class="menu_text"><li>Sign in to start tweeting</li></p>
+              <li><%= link_to 'Login', new_user_session_path, class: "btnew btnew--primary" %></li>
+            </ul>
+          <% end %>
+          
+        </div>
+      </nav>
+    </header>
+
     <%= yield %>
+
+    <footer class="container m-auto" style="max-width: 420px;padding: 16px 0px;">
+      <p class="footer--txt content--sm">© 2021 - Codeable Tweetable</p>
+      <p class="content--sm">Build with <span class="footer--heart">♥</span> by</p>
+      <div class="footer--social-container content--xs">
+        <div class="footer--social-name">
+          <%= image_tag "linkdin-vector.svg" %>
+          <p class="footer--txt"> José Heredia</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
