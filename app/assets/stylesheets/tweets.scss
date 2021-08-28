@@ -1,3 +1,209 @@
 // Place all the styles related to the Tweets controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+.section--sm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0px;
+  gap: 16px;
+  background-color: #f2f2f2;
+  border: 2px solid var(--gray-200);
+}
+
+.heading_home {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.tweets {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0px;
+  gap: 8px;
+}
+
+.tweet_frame {
+  padding: 4px 8px;
+  background: #ffffff;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  max-width: 368px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 8px;
+  min-width: 320px;
+  max-width: 360px;
+  gap: 8px;
+}
+
+.tweet_frame_header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+}
+
+.tweet_body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #000000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.tweet_frame_footer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 0px;
+  width: 100%;
+  align-items: center;
+}
+
+.edit_delete {
+  display: flex;
+  gap: 24px;
+}
+
+.delete--btn {
+  background-image: url("Icon-delete.svg");
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  // background-size: cover;
+}
+
+.edit--btn {
+  background-image: url("Icon-edit.svg");
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  // background-size: cover;
+}
+
+.reply_like {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.avatar {
+  position: static;
+  width: 48px;
+  height: 48px;
+  left: 0px;
+  top: 0px;
+  border-radius: 50%;
+}
+
+.time_ago {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #5b7083;
+  margin: 0px;
+}
+
+.tweet_frame_header_data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+}
+
+.tweet_username {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 8px;
+}
+
+.name {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #0f1419;
+}
+
+.username {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #5b7083;
+}
+
+/* EDDIT TWEET */
+
+.size_edit {
+  width: 312px;
+  height: 224px;
+  font-family: var(--secondary-font);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.area_size {
+  width: 312px;
+  height: 136px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: var(--shadow-base);
+  resize: none;
+  overflow: auto;
+}
+
+.button-submit {
+  position: absolute;
+  width: 74px;
+  height: 28px;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--primary-300);
+  color: #ffffff;
+  margin-left: 235px;
+  top: 240px;
+}
+@media (min-width: 700px) {
+  .tweets {
+    gap: 1rem;
+  }
+}
