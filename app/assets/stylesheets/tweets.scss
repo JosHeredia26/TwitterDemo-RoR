@@ -95,6 +95,12 @@
   gap: 8px;
 }
 
+.icons_comment {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
 .edit_delete {
   display: flex;
   gap: 24px;
@@ -188,10 +194,11 @@
   width: 312px;
   height: 136px;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: var(--shadow-base);
   resize: none;
   overflow: auto;
+  padding: 12px;
 }
 
 .button-submit {

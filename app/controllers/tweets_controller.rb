@@ -1,7 +1,8 @@
 class TweetsController < ApplicationController
   # GET /tweets
   def index
-    @tweets = Tweet.all
+    # @tweets = Tweet.all
+    @tweets = Tweet.all.sort { |x, y| y[:created_at] <=> x[:created_at] }
   end
 
   # GET /tweets/:id
