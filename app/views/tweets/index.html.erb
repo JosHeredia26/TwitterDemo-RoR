@@ -5,7 +5,7 @@
     <% if current_user&.id %>
       <div class="tweet_form">
         <div>
-          <%= image_tag "thanus.png", class: "avatar" %>
+          <%= image_tag current_user.avatar, class: "avatar" %>
         </div>
         <div style="width:84%;">
           <%= form_with(model: Tweet.new, html: {style: "display:flex;flex-direction:column;align-items:flex-end;"}) do |form|%>
@@ -21,7 +21,7 @@
         <div class="tweet_frame">
           <div class="content">
             <div class="tweet_frame_header">
-              <%= image_tag "thanus.png", class: "avatar" %>
+              <%= image_tag tweet.user.avatar, class: "avatar" %>
 
               <div class="tweet_frame_header_data">
                 <div class="tweet_username">

@@ -26,9 +26,10 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.user = current_user
+    tweet = @comment.tweet
 
     if @comment.update(comment_params)
-      redirect_to comments_path
+      redirect_to tweet
     else
       render :edit
     end
@@ -38,11 +39,12 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to comments_path
+    tweet = @comment.tweet
+    redirect_to tweet
   end
 
   # Only allow a list of trusted parameters through.
-  # def comment_params
-  #   params.require(:comment).permit(:body)
-  # end
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 end

@@ -16,7 +16,7 @@ jos = User.new(
 )
 puts "User not created.\nErrors: #{jos.errors.full_messages}" unless jos.save
 
-rand(3..6).times do
+rand(3..5).times do
   user_data = {
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 6),
@@ -53,5 +53,9 @@ tweets.each do |tweet|
     puts "Tweet not created.\nErrors: #{new_comment.errors.full_messages}" unless new_comment.save
   end
 end
+
+puts "Seeding avatars..."
+users = User.all
+users.each_with_index { |user, index| user.avatar.attach(io: File.open("public/Avatar/#{index}.png"),filename:"#{index}.png") }
 
 puts "Finish seeding"
