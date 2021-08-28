@@ -10,8 +10,6 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <header class="navbar align-center">
       <%= link_to(image_tag("twitter-logo", :alt => "logo"), root_path, class: 'logo' ) %>
       <nav role="navigation">
@@ -24,15 +22,9 @@
 
           <% if user_signed_in? %>
             <ul id="menu">
-              <% if current_user.admin? %>
-                <p class="menu_text"><li>Welcome admin!</li></p>
-              <% else %>
-                <p class="menu_text"><li>Welcome Churrucutito!</li></p>
-              <% end %>
-              <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "menu_link" %></li>
-              <li><%= link_to 'Games', games_path, class: "menu_link" %></li>
-              <li><%= link_to 'Companies', companies_path, class: "menu_link" %></li>
-              <li><%= link_to 'LOG OUT', destroy_user_session_path, method: :delete, class: "btnew btnew--secondary" %></li>
+              <p class="menu_text"><li><%= "Welcome #{current_user.username}!" %></li></p>
+              <li><%= link_to 'Edit Profile', edit_user_registration_path, class: "msg_login_link" %></li>
+              <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btnew btnew--primary" %></li>
             </ul>
           <% else %>
             <ul id="menu_sign_in">
@@ -47,7 +39,7 @@
 
     <%= yield %>
 
-    <footer class="container m-auto" style="max-width: 400px;padding: 16px 0px;">
+    <footer class="container m-auto" style="max-width: 420px;padding: 16px 0px;">
       <p class="footer--txt content--sm">© 2021 - Codeable Tweetable</p>
       <p class="content--sm">Build with <span class="footer--heart">♥</span> by</p>
       <div class="footer--social-container content--xs">

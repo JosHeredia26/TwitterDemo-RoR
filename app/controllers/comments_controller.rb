@@ -1,13 +1,7 @@
 class CommentsController < ApplicationController
   # GET /comments
-  def index
-    @comments = Comment.all
-  end
 
   # GET /comments/:id
-  def show
-    @comment = Comment.find(params[:id])
-  end
 
   # GET /comments/new
   def new
@@ -21,18 +15,17 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
-
-    if @comment.save
-      redirect_to comments_path
-    else
-      render :new
-    end
+    tweet = Tweet.find(params[:tweet_id])
+    comment = Comment.new(body: params[:body], user: current_user,
+                          tweet: Tweet.find(params[:tweet_id]))
+    comment.save
+    redirect_to tweet
   end
 
   # PATCH/PUT /comments/:id
   def update
     @comment = Comment.find(params[:id])
+    @comment.user = current_user
 
     if @comment.update(comment_params)
       redirect_to comments_path
@@ -48,10 +41,8 @@ class CommentsController < ApplicationController
     redirect_to comments_path
   end
 
-  private
-
   # Only allow a list of trusted parameters through.
-  def comment_params
-    params.require(:comment).permit(:body)
-  end
+  # def comment_params
+  #   params.require(:comment).permit(:body)
+  # end
 end

@@ -1,13 +1,18 @@
 <section class="section--sm">
-  <div class="container" style="min-width:400px;">
+  <div class="container" style="min-width:420px;">
     <h1 class="heading_home">Home</h1>
 
     <% if current_user&.id %>
-      <div class="tweet_form mb-16">
-        <%= form_with model: @tweet do |form|%>
-          <%= form.text_area :body %>
-          <%= form.submit%>
-        <% end %>
+      <div class="tweet_form">
+        <div>
+          <%= image_tag "thanus.png", class: "avatar" %>
+        </div>
+        <div style="width:84%;">
+          <%= form_with(model: Tweet.new, html: {style: "display:flex;flex-direction:column;align-items:flex-end;"}) do |form|%>
+            <%= form.text_area :body, placeholder: "Remember to thing before write.", class: "tweet_area" %>
+            <%= form.submit "Tweet",class: "btn btn--primary btn--medium", style: "border-radius: 100px;"%>
+          <% end %>
+        </div>
       </div>      
     <% end %>
     
@@ -33,12 +38,22 @@
             </div>
 
             <div>
-              <p class="tweet_body"><%= tweet.body %></p>
+              <p class="tweet_body"><%= link_to tweet.body, tweet_path(tweet) %></p>
             </div>
 
             <div class="tweet_frame_footer">
-              <%= image_tag "Vector.svg" %>
-              <p class="time_ago"><%= tweet.comments_count %></p>
+              <div class="icons">
+                <%= link_to(image_tag("Vector.svg"), tweet_path(tweet)) %>
+                <p class="time_ago"><%= tweet.comments_count %></p>
+              </div>
+
+              <div class="icons">
+                <% if current_user&.id == tweet.user.id %>
+                  <%= link_to(image_tag('Icon-delete.svg'), tweet, method: :delete,
+                                         data: { confirm: '¿Quieres borrar este tweet?'},) %>
+                  <%= link_to(image_tag('Icon-edit.svg'), edit_tweet_path(tweet)) %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>

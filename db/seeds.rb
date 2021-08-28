@@ -30,7 +30,7 @@ end
 puts "Seeding tweets..."
 users = User.all
 users.each do |user|
-  rand(0..2).times do
+  rand(1..3).times do
     tweet_data = {
       body: Faker::Lorem.paragraph,
       user: user
@@ -43,7 +43,7 @@ end
 puts "Seeding comments..."
 tweets = Tweet.all
 tweets.each do |tweet|
-  rand(0..2).times do
+  rand(2..4).times do
     comment_data = {
       body: Faker::Lorem.paragraph,
       tweet: tweet,
