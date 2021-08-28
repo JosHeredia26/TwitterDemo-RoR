@@ -1,0 +1,48 @@
+<section class="section--sm">
+  <div class="container" style="min-width:400px;">
+    <h1 class="heading_home">Home</h1>
+
+    <% if current_user&.id %>
+      <div class="tweet_form mb-16">
+        <%= form_with model: @tweet do |form|%>
+          <%= form.text_area :body %>
+          <%= form.submit%>
+        <% end %>
+      </div>      
+    <% end %>
+    
+    <div class="tweets" >
+      <% @tweets.each do |tweet| %>
+        <div class="tweet_frame">
+          <div class="content">
+            <div class="tweet_frame_header">
+              <%= image_tag "thanus.png", class: "avatar" %>
+
+              <div class="tweet_frame_header_data">
+                <div class="tweet_username">
+                  <p class="name">
+                    <%= tweet.user.name %>
+                  </p>
+                  <p class="username">
+                    <%= "@#{tweet.user.username}" %>
+                  </p>
+                </div>
+
+                <p class="time_ago"><%= "#{distance_of_time_in_words(tweet.created_at, DateTime.now)} ago" %></p>
+              </div>
+            </div>
+
+            <div>
+              <p class="tweet_body"><%= tweet.body %></p>
+            </div>
+
+            <div class="tweet_frame_footer">
+              <%= image_tag "Vector.svg" %>
+              <p class="time_ago"><%= tweet.comments_count %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
