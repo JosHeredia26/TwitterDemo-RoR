@@ -4,7 +4,7 @@ TwitterDemo is a simpler version of Twitter
 
 ## Before starting!
 
-1. Download the folder "required_files"
+1. Download the required files for Ruby on Rails
 
 2. Open the folder in a code editor (VS Code)
 
