@@ -2,6 +2,8 @@
 
 TwitterDemo is a simpler version of Twitter
 
+![Project Image](project-image.PNG)
+
 ## Before starting!
 
 1. Download the required files for Ruby on Rails
